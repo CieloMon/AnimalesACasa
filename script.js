@@ -1,12 +1,12 @@
 /* =====================================================
    ¡DE VUELTA A CASA!
-   JavaScript del juego educativo
+   JavaScript para computadora + celular
    ===================================================== */
 
 
-/* -----------------------------------------
-   ELEMENTOS DE LA PÁGINA
-   ----------------------------------------- */
+/* -----------------------------------------------------
+   ELEMENTOS
+   ----------------------------------------------------- */
 
 const pantallaInicio =
     document.getElementById("pantallaInicio");
@@ -36,64 +36,112 @@ const numeroRescatados =
     document.getElementById("numeroRescatados");
 
 
-/* -----------------------------------------
-   VARIABLES DEL JUEGO
-   ----------------------------------------- */
+/* -----------------------------------------------------
+   VARIABLES
+   ----------------------------------------------------- */
 
 let animalArrastrado = null;
+
+let animalSeleccionado = null;
 
 let animalesEnCasa = 0;
 
 
 /* =====================================================
-   COMENZAR LA AVENTURA
+   COMENZAR
    ===================================================== */
 
-botonComenzar.addEventListener(
-    "click",
-    function () {
+botonComenzar.addEventListener("click", function () {
 
-        pantallaInicio.classList.add("oculto");
+    pantallaInicio.classList.add("oculto");
 
-        pantallaJuego.classList.remove("oculto");
+    pantallaJuego.classList.remove("oculto");
 
-        mensajeResultado.textContent =
-            "🌟 ¡Comienza la misión! Observa muy bien las pistas.";
+    mensajeResultado.className =
+        "mensaje-resultado";
 
-    }
-);
+    mensajeResultado.textContent =
+        "🌟 ¡Comienza la misión! Arrastra un animalito o tócalo para elegirlo.";
+
+});
 
 
 /* =====================================================
-   ARRASTRAR LOS ANIMALITOS
+   ANIMALITOS
    ===================================================== */
 
 animales.forEach(function (animal) {
 
-    animal.addEventListener(
-        "dragstart",
-        function () {
+    /* -----------------------------------------------
+       COMPUTADORA: ARRASTRAR
+       ----------------------------------------------- */
 
-            animalArrastrado = animal;
+    animal.addEventListener("dragstart", function () {
 
-            animal.classList.add(
-                "arrastrando"
+        if (animal.classList.contains("en-casa")) {
+            return;
+        }
+
+        animalArrastrado = animal;
+
+        animal.classList.add("arrastrando");
+
+    });
+
+
+    animal.addEventListener("dragend", function () {
+
+        animal.classList.remove("arrastrando");
+
+        animalArrastrado = null;
+
+    });
+
+
+    /* -----------------------------------------------
+       CELULAR / TABLET: TOCAR PARA SELECCIONAR
+       ----------------------------------------------- */
+
+    animal.addEventListener("click", function () {
+
+        if (animal.classList.contains("en-casa")) {
+            return;
+        }
+
+        /* Quitamos selección anterior */
+
+        animales.forEach(function (otroAnimal) {
+
+            otroAnimal.classList.remove(
+                "seleccionado"
             );
 
-        }
-    );
+        });
 
 
-    animal.addEventListener(
-        "dragend",
-        function () {
+        /* Seleccionamos este */
 
-            animal.classList.remove(
-                "arrastrando"
-            );
+        animalSeleccionado = animal;
 
-        }
-    );
+        animal.classList.add(
+            "seleccionado"
+        );
+
+
+        const nombre =
+            animal.querySelector("strong").textContent;
+
+
+        mensajeResultado.className =
+            "mensaje-resultado seleccionado-mensaje";
+
+
+        mensajeResultado.textContent =
+            "👆 ¡Elegiste a " +
+            nombre +
+            "! Ahora toca la casita donde crees que vive.";
+
+    });
 
 });
 
@@ -104,10 +152,9 @@ animales.forEach(function (animal) {
 
 habitats.forEach(function (habitat) {
 
-    /*
-       Permite que podamos soltar
-       un animal dentro del hábitat.
-    */
+    /* -----------------------------------------------
+       COMPUTADORA
+       ----------------------------------------------- */
 
     habitat.addEventListener(
         "dragover",
@@ -115,34 +162,21 @@ habitats.forEach(function (habitat) {
 
             evento.preventDefault();
 
-            habitat.classList.add(
-                "sobre"
-            );
+            habitat.classList.add("sobre");
 
         }
     );
 
-
-    /*
-       Cuando el animal sale del área,
-       quitamos el efecto visual.
-    */
 
     habitat.addEventListener(
         "dragleave",
         function () {
 
-            habitat.classList.remove(
-                "sobre"
-            );
+            habitat.classList.remove("sobre");
 
         }
     );
 
-
-    /*
-       Cuando soltamos el animal.
-    */
 
     habitat.addEventListener(
         "drop",
@@ -150,63 +184,49 @@ habitats.forEach(function (habitat) {
 
             evento.preventDefault();
 
-            habitat.classList.remove(
-                "sobre"
-            );
+            habitat.classList.remove("sobre");
 
-
-            /*
-               Si no tenemos un animal
-               seleccionado, no hacemos nada.
-            */
 
             if (!animalArrastrado) {
                 return;
             }
 
 
-            /*
-               Casa correcta del animal.
-            */
+            revisarRespuesta(
+                animalArrastrado,
+                habitat
+            );
 
-            const casaCorrecta =
-                animalArrastrado.dataset.casa;
-
-
-            /*
-               Hábitat donde lo soltaron.
-            */
-
-            const casaElegida =
-                habitat.dataset.habitat;
+        }
+    );
 
 
-            /*
-               Comparamos las dos respuestas.
-            */
+    /* -----------------------------------------------
+       CELULAR / TABLET
+       ----------------------------------------------- */
 
-            if (
-                casaCorrecta ===
-                casaElegida
-            ) {
+    habitat.addEventListener(
+        "click",
+        function () {
 
-                respuestaCorrecta(
-                    animalArrastrado,
-                    habitat
-                );
+            if (!animalSeleccionado) {
 
-            }
+                mensajeResultado.className =
+                    "mensaje-resultado incorrecto";
 
-            else {
 
-                respuestaIncorrecta(
-                    animalArrastrado
-                );
+                mensajeResultado.textContent =
+                    "🐾 Primero elige un animalito y después toca su casita.";
+
+                return;
 
             }
 
 
-            animalArrastrado = null;
+            revisarRespuesta(
+                animalSeleccionado,
+                habitat
+            );
 
         }
     );
@@ -215,39 +235,52 @@ habitats.forEach(function (habitat) {
 
 
 /* =====================================================
-   RESPUESTA CORRECTA
+   REVISAR RESPUESTA
    ===================================================== */
 
-function respuestaCorrecta(
-    animal,
-    habitat
-) {
+function revisarRespuesta(animal, habitat) {
 
-    /*
-       Evitamos contar dos veces
-       el mismo animal.
-    */
+    const casaCorrecta =
+        animal.dataset.casa;
 
-    if (
-        animal.classList.contains(
-            "en-casa"
-        )
-    ) {
+    const casaElegida =
+        habitat.dataset.habitat;
 
-        return;
+
+    if (casaCorrecta === casaElegida) {
+
+        respuestaCorrecta(
+            animal,
+            habitat
+        );
 
     }
 
+    else {
 
-    animal.classList.add(
-        "en-casa"
-    );
+        respuestaIncorrecta(
+            animal
+        );
+
+    }
+
+}
 
 
-    /*
-       El animal deja de poder
-       arrastrarse.
-    */
+/* =====================================================
+   RESPUESTA CORRECTA
+   ===================================================== */
+
+function respuestaCorrecta(animal, habitat) {
+
+    if (animal.classList.contains("en-casa")) {
+        return;
+    }
+
+
+    animal.classList.add("en-casa");
+
+    animal.classList.remove("seleccionado");
 
     animal.setAttribute(
         "draggable",
@@ -255,24 +288,13 @@ function respuestaCorrecta(
     );
 
 
-    /*
-       Lo colocamos dentro
-       del hábitat correcto.
-    */
-
     const zonaSoltar =
-        habitat.querySelector(
-            ".zona-soltar"
-        );
+        habitat.querySelector(".zona-soltar");
 
 
     zonaSoltar.innerHTML =
         "⭐ ¡EN CASA! ⭐";
 
-
-    /*
-       Contamos el rescate.
-    */
 
     animalesEnCasa++;
 
@@ -280,38 +302,55 @@ function respuestaCorrecta(
         animalesEnCasa;
 
 
-    /*
-       Mensaje para el niño.
-    */
-
     const nombre =
-        animal.querySelector(
-            "strong"
-        ).textContent;
+        animal.querySelector("strong").textContent;
 
 
     mensajeResultado.className =
         "mensaje-resultado correcto";
 
 
-    mensajeResultado.textContent =
-        "🎉 ¡Muy bien! " +
-        nombre +
-        " encontró su casita.";
+    /* MENSAJES PERSONALIZADOS */
+
+    if (nombre === "Rex") {
+
+        mensajeResultado.textContent =
+            "🦜 🎉 ¡SÍÍÍ! ¡Rex el león está en casa! 🦁🌾";
+
+    }
+
+    else if (nombre === "Blue") {
+
+        mensajeResultado.textContent =
+            "🐢 🎉 ¡BLUE ESTÁ EN CASA! ¡Al aguaaa! 🐬🌊";
+
+    }
+
+    else if (nombre === "Zafir") {
+
+        mensajeResultado.textContent =
+            "🦎 🎉 ¡Zafir encontró su casita! 🐪🌵";
+
+    }
+
+    else if (nombre === "Moki") {
+
+        mensajeResultado.textContent =
+            "🦜 🎉 ¡Moki volvió a casa! 🐒🌴";
+
+    }
 
 
-    /*
-       Si ya están todos,
-       terminamos el juego.
-    */
+    animalSeleccionado = null;
 
-    if (
-        animalesEnCasa === 4
-    ) {
+    animalArrastrado = null;
+
+
+    if (animalesEnCasa === 4) {
 
         setTimeout(
             mostrarPantallaFinal,
-            1200
+            1300
         );
 
     }
@@ -323,14 +362,10 @@ function respuestaCorrecta(
    RESPUESTA INCORRECTA
    ===================================================== */
 
-function respuestaIncorrecta(
-    animal
-) {
+function respuestaIncorrecta(animal) {
 
     const nombre =
-        animal.querySelector(
-            "strong"
-        ).textContent;
+        animal.querySelector("strong").textContent;
 
 
     mensajeResultado.className =
@@ -338,32 +373,31 @@ function respuestaIncorrecta(
 
 
     mensajeResultado.textContent =
-        "🤔 ¡Ups! Esa no parece ser la casita de " +
+        "🦉 ¡Ups! Esa no es la casita de " +
         nombre +
-        ". Observa las pistas otra vez.";
+        ". Mira nuevamente sus pistas… ¡tú puedes! 💛";
+
+
+    /* El animal sigue seleccionado para volver a intentar */
 
 }
 
 
 /* =====================================================
-   PANTALLA FINAL
+   FINAL
    ===================================================== */
 
 function mostrarPantallaFinal() {
 
-    pantallaJuego.classList.add(
-        "oculto"
-    );
+    pantallaJuego.classList.add("oculto");
 
-    pantallaFinal.classList.remove(
-        "oculto"
-    );
+    pantallaFinal.classList.remove("oculto");
 
 }
 
 
 /* =====================================================
-   VOLVER A JUGAR
+   REINICIAR
    ===================================================== */
 
 botonReiniciar.addEventListener(
