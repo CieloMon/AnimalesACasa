@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>¡De vuelta a casa!</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         PANTALLA DE INICIO
+         ========================================= -->
+
+    <main id="pantallaInicio" class="pantalla pantalla-inicio">
+
+        <section class="tarjeta-inicio">
+
+            <h1>
+                🐾
+                <span class="titulo-morado">¡De vuelta</span>
+                <span class="titulo-rosa">a</span>
+                <span class="titulo-verde">casa!</span>
+                🏡
+            </h1>
+
+            <h2>
+                💗 ¡Nuestros animalitos necesitan tu ayuda! 💗
+            </h2>
+
+            <div class="instrucciones">
+
+                <span class="lupa">🔎</span>
+
+                <span class="texto-instrucciones">
+
+                    <span class="morado">
+                        Observa las pistas,
+                    </span>
+
+                    <span class="rosa">
+                        piensa muy bien
+                    </span>
+
+                    <span class="amarillo">
+                        y ayuda a cada animalito
+                    </span>
+
+                    <span class="azul">
+                        a encontrar su casita.
+                    </span>
+
+                </span>
+
+            </div>
+
+            <p class="mensaje">
+                🌎
+                ¡Cada animalito tiene un lugar especial donde vivir!
+            </p>
+
+            <button id="botonComenzar">
+
+                🦁
+
+                <span>
+                    ¡COMENZAR LA AVENTURA!
+                </span>
+
+                🐒
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         PANTALLA DEL JUEGO
+         ========================================= -->
+
+    <main id="pantallaJuego" class="pantalla pantalla-juego oculto">
+
+        <section class="juego">
+
+            <header class="encabezado-juego">
+
+                <div>
+
+                    <h3>
+                        🧭 MISIÓN DE RESCATE
+                    </h3>
+
+                    <h4>
+                        ¡Ahora tú decides!
+                    </h4>
+
+                    <p>
+                        Arrastra cada animalito hasta el lugar
+                        que mejor encaje con sus pistas.
+                    </p>
+
+                </div>
+
+                <div class="contador">
+
+                    🐾 Animalitos en casa:
+
+                    <strong id="numeroRescatados">
+                        0
+                    </strong>
+
+                    / 4
+
+                </div>
+
+            </header>
+
+
+            <!-- HÁBITATS -->
+
+            <section class="habitats">
+
+                <div class="habitat desierto"
+                     data-habitat="desierto">
+
+                    <div class="icono-habitat">
+                        🌵
+                    </div>
+
+                    <h5>
+                        DESIERTO
+                    </h5>
+
+                    <p>
+                        El sol es intenso, casi no llueve
+                        y la temperatura cambia mucho
+                        entre el día y la noche.
+                    </p>
+
+                    <div class="zona-soltar">
+                        Arrastra aquí
+                    </div>
+
+                </div>
+
+
+                <div class="habitat selva"
+                     data-habitat="selva">
+
+                    <div class="icono-habitat">
+                        🌴
+                    </div>
+
+                    <h5>
+                        SELVA
+                    </h5>
+
+                    <p>
+                        Es un mundo verde y húmedo,
+                        con árboles, plantas y muchos
+                        lugares para trepar y esconderse.
+                    </p>
+
+                    <div class="zona-soltar">
+                        Arrastra aquí
+                    </div>
+
+                </div>
+
+
+                <div class="habitat sabana"
+                     data-habitat="sabana">
+
+                    <div class="icono-habitat">
+                        🌾
+                    </div>
+
+                    <h5>
+                        SABANA
+                    </h5>
+
+                    <p>
+                        Hay grandes espacios abiertos,
+                        pocos árboles y mucho lugar
+                        para correr y observar.
+                    </p>
+
+                    <div class="zona-soltar">
+                        Arrastra aquí
+                    </div>
+
+                </div>
+
+
+                <div class="habitat oceano"
+                     data-habitat="oceano">
+
+                    <div class="icono-habitat">
+                        🌊
+                    </div>
+
+                    <h5>
+                        OCÉANO
+                    </h5>
+
+                    <p>
+                        Es un enorme mundo en movimiento,
+                        con corrientes, profundidad
+                        y grandes espacios para nadar.
+                    </p>
+
+                    <div class="zona-soltar">
+                        Arrastra aquí
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ANIMALITOS -->
+
+            <section class="zona-animales">
+
+                <h5 class="titulo-animalitos">
+                    🐾 ¡Los animalitos están esperando tu ayuda!
+                </h5>
+
+
+                <div class="animalitos">
+
+                    <div class="animal"
+                         draggable="true"
+                         id="rex"
+                         data-casa="sabana">
+
+                        <div class="animal-emoji">
+                            🦁
+                        </div>
+
+                        <strong>
+                            Rex
+                        </strong>
+
+                        <span>
+                            Necesito espacio para correr,
+                            explorar y observar.
+                        </span>
+
+                    </div>
+
+
+                    <div class="animal"
+                         draggable="true"
+                         id="blue"
+                         data-casa="oceano">
+
+                        <div class="animal-emoji">
+                            🐬
+                        </div>
+
+                        <strong>
+                            Blue
+                        </strong>
+
+                        <span>
+                            Mi cuerpo está hecho
+                            para moverme bajo el agua.
+                        </span>
+
+                    </div>
+
+
+                    <div class="animal"
+                         draggable="true"
+                         id="zafir"
+                         data-casa="desierto">
+
+                        <div class="animal-emoji">
+                            🐪
+                        </div>
+
+                        <strong>
+                            Zafir
+                        </strong>
+
+                        <span>
+                            Puedo resistir el calor
+                            y pasar mucho tiempo sin agua.
+                        </span>
+
+                    </div>
+
+
+                    <div class="animal"
+                         draggable="true"
+                         id="moki"
+                         data-casa="selva">
+
+                        <div class="animal-emoji">
+                            🐒
+                        </div>
+
+                        <strong>
+                            Moki
+                        </strong>
+
+                        <span>
+                            Me encanta trepar,
+                            saltar y moverme entre plantas.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MENSAJE DE RETROALIMENTACIÓN -->
+
+            <div id="mensajeResultado"
+                 class="mensaje-resultado">
+
+                🌟 Observa las pistas y comienza.
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         PANTALLA FINAL
+         ========================================= -->
+
+    <main id="pantallaFinal"
+          class="pantalla pantalla-final oculto">
+
+        <section class="tarjeta-final">
+
+            <div class="trofeo">
+                🏆
+            </div>
+
+            <h2>
+                ¡MISIÓN CUMPLIDA!
+            </h2>
+
+            <h3>
+                🎉 ¡Todos los animalitos volvieron a casa! 🎉
+            </h3>
+
+            <p>
+                Observaste las pistas, pensaste muy bien
+                y descubriste qué necesita cada animalito
+                para vivir.
+            </p>
+
+            <div class="insignia">
+                ⭐ SUPEREXPLORADOR DE LOS ANIMALES ⭐
+            </div>
+
+            <button id="botonReiniciar">
+                🔄 ¡JUGAR OTRA VEZ!
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
