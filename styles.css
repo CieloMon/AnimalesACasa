@@ -779,7 +779,9 @@ h1 {
 
     transition:
         transform 0.2s ease,
-        opacity 0.2s ease;
+        opacity 0.2s ease,
+        box-shadow 0.2s ease,
+        border 0.2s ease;
 }
 
 
@@ -854,6 +856,45 @@ h1 {
     border:
         3px solid
         #41c66d;
+}
+
+
+/* =====================================================
+   MODO TÁCTIL
+   ===================================================== */
+
+.animal.seleccionado {
+
+    transform:
+        translateY(-8px)
+        scale(1.05);
+
+    border:
+        4px solid
+        #a35be8;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7e5ff,
+            #fff0f7
+        );
+
+    box-shadow:
+        0 0 0 6px
+        rgba(163, 91, 232, 0.18),
+        0 12px 25px
+        rgba(80, 50, 120, 0.20);
+}
+
+
+.seleccionado-mensaje {
+
+    background:
+        #f4e4ff;
+
+    color:
+        #7140a0;
 }
 
 
@@ -1067,9 +1108,7 @@ h1 {
    RESPONSIVE
    ===================================================== */
 
-@media (
-    max-width: 1000px
-) {
+@media (max-width: 1000px) {
 
     .tarjeta-inicio {
 
@@ -1095,12 +1134,37 @@ h1 {
         text-align:
             center;
     }
+
+    .animal {
+
+        cursor:
+            pointer;
+    }
+
+    .habitat {
+
+        cursor:
+            pointer;
+    }
+
+    .zona-soltar {
+
+        min-height:
+            60px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+    }
 }
 
 
-@media (
-    max-width: 600px
-) {
+@media (max-width: 600px) {
 
     #botonComenzar {
 
