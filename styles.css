@@ -60,16 +60,12 @@ body {
 }
 
 
-/* TARJETA */
-
 .tarjeta-inicio {
 
     width: min(900px, 64vw);
 
     padding:
-        26px
-        42px
-        32px;
+        26px 42px 32px;
 
     text-align: center;
 
@@ -119,7 +115,9 @@ body {
 }
 
 
-/* TÍTULO */
+/* =====================================================
+   TÍTULO
+   ===================================================== */
 
 h1 {
 
@@ -160,7 +158,9 @@ h1 {
 }
 
 
-/* SUBTÍTULO */
+/* =====================================================
+   SUBTÍTULO
+   ===================================================== */
 
 .tarjeta-inicio h2 {
 
@@ -182,7 +182,9 @@ h1 {
 }
 
 
-/* INSTRUCCIONES */
+/* =====================================================
+   INSTRUCCIONES
+   ===================================================== */
 
 .instrucciones {
 
@@ -230,9 +232,7 @@ h1 {
 
 
 .lupa {
-
-    font-size:
-        32px;
+    font-size: 32px;
 }
 
 
@@ -245,11 +245,9 @@ h1 {
             23px
         );
 
-    line-height:
-        1.4;
+    line-height: 1.4;
 
-    font-weight:
-        900;
+    font-weight: 900;
 }
 
 
@@ -270,7 +268,9 @@ h1 {
 }
 
 
-/* MENSAJE */
+/* =====================================================
+   MENSAJE
+   ===================================================== */
 
 .mensaje {
 
@@ -287,30 +287,26 @@ h1 {
             27px
         );
 
-    font-weight:
-        900;
+    font-weight: 900;
 }
 
 
-/* BOTÓN */
+/* =====================================================
+   BOTONES
+   ===================================================== */
 
 #botonComenzar,
 #botonReiniciar {
 
-    border:
-        none;
+    border: none;
 
-    border-radius:
-        50px;
+    border-radius: 50px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
-    color:
-        white;
+    color: white;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
     background:
         linear-gradient(
@@ -320,9 +316,7 @@ h1 {
         );
 
     box-shadow:
-        0 9px 0
-        #087934,
-
+        0 9px 0 #087934,
         0 14px 24px
         rgba(0, 108, 45, 0.27);
 
@@ -335,11 +329,9 @@ h1 {
 
 #botonComenzar {
 
-    min-width:
-        500px;
+    min-width: 500px;
 
-    padding:
-        18px 34px;
+    padding: 18px 34px;
 
     font-size:
         clamp(
@@ -351,9 +343,7 @@ h1 {
 
 
 #botonComenzar span {
-
-    margin:
-        0 15px;
+    margin: 0 15px;
 }
 
 
@@ -384,8 +374,7 @@ h1 {
 
 .pantalla-juego {
 
-    padding:
-        30px;
+    padding: 30px;
 
     background:
         linear-gradient(
@@ -400,38 +389,32 @@ h1 {
 
 .juego {
 
-    max-width:
-        1500px;
+    max-width: 1500px;
 
-    margin:
-        auto;
+    margin: auto;
 }
 
 
-/* ENCABEZADO */
+/* =====================================================
+   ENCABEZADO
+   ===================================================== */
 
 .encabezado-juego {
 
-    display:
-        flex;
+    display: flex;
 
     justify-content:
         space-between;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        20px;
+    gap: 20px;
 
-    margin-bottom:
-        25px;
+    margin-bottom: 25px;
 
-    padding:
-        20px 28px;
+    padding: 20px 28px;
 
-    border-radius:
-        28px;
+    border-radius: 28px;
 
     background:
         rgba(
@@ -454,59 +437,45 @@ h1 {
 
 .encabezado-juego h3 {
 
-    margin:
-        0;
+    margin: 0;
 
-    color:
-        #6540aa;
+    color: #6540aa;
 
-    font-size:
-        31px;
+    font-size: 31px;
 }
 
 
 .encabezado-juego h4 {
 
-    margin:
-        5px 0;
+    margin: 5px 0;
 
-    color:
-        #ef4d91;
+    color: #ef4d91;
 
-    font-size:
-        25px;
+    font-size: 25px;
 }
 
 
 .encabezado-juego p {
 
-    margin:
-        5px 0 0;
+    margin: 5px 0 0;
 
-    font-size:
-        18px;
+    font-size: 18px;
 }
 
 
 .contador {
 
-    padding:
-        15px 20px;
+    padding: 15px 20px;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    background:
-        #fff5c7;
+    background: #fff5c7;
 
-    font-size:
-        19px;
+    font-size: 19px;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 
@@ -516,40 +485,29 @@ h1 {
 
 .habitats {
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
+        repeat(4, 1fr);
 
-    gap:
-        18px;
+    gap: 18px;
 
-    margin-bottom:
-        27px;
+    margin-bottom: 27px;
 }
 
 
 .habitat {
 
-    min-height:
-        290px;
+    min-height: 290px;
 
-    padding:
-        18px;
+    padding: 18px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    border-radius:
-        28px;
+    border-radius: 28px;
 
     border:
-        4px solid
-        white;
+        4px solid white;
 
     box-shadow:
         0 10px 22px
@@ -608,8 +566,7 @@ h1 {
 
 .icono-habitat {
 
-    font-size:
-        55px;
+    font-size: 55px;
 }
 
 
@@ -618,31 +575,25 @@ h1 {
     margin:
         5px 0 10px;
 
-    font-size:
-        24px;
+    font-size: 24px;
 }
 
 
 .habitat p {
 
-    min-height:
-        92px;
+    min-height: 92px;
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    line-height:
-        1.4;
+    line-height: 1.4;
 
-    font-weight:
-        700;
+    font-weight: 700;
 }
 
 
 .zona-soltar {
 
-    margin-top:
-        15px;
+    margin-top: 15px;
 
     padding:
         15px 10px;
@@ -656,8 +607,7 @@ h1 {
             0.35
         );
 
-    border-radius:
-        18px;
+    border-radius: 18px;
 
     background:
         rgba(
@@ -667,8 +617,7 @@ h1 {
             0.55
         );
 
-    font-weight:
-        900;
+    font-weight: 900;
 }
 
 
@@ -694,11 +643,9 @@ h1 {
 
 .zona-animales {
 
-    padding:
-        20px;
+    padding: 20px;
 
-    border-radius:
-        28px;
+    border-radius: 28px;
 
     background:
         rgba(
@@ -724,49 +671,36 @@ h1 {
     margin:
         0 0 18px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        #634096;
+    color: #634096;
 
-    font-size:
-        23px;
+    font-size: 23px;
 }
 
 
 .animalitos {
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
+        repeat(4, 1fr);
 
-    gap:
-        18px;
+    gap: 18px;
 }
 
 
 .animal {
 
-    padding:
-        17px;
+    padding: 17px;
 
-    border-radius:
-        25px;
+    border-radius: 25px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    cursor:
-        grab;
+    cursor: grab;
 
-    background:
-        white;
+    background: white;
 
     box-shadow:
         0 8px 18px
@@ -794,51 +728,42 @@ h1 {
 
 .animal:active {
 
-    cursor:
-        grabbing;
+    cursor: grabbing;
 }
 
 
 .animal-emoji {
 
-    font-size:
-        65px;
+    font-size: 65px;
 }
 
 
 .animal strong {
 
-    display:
-        block;
+    display: block;
 
     margin:
         5px 0;
 
-    color:
-        #594184;
+    color: #594184;
 
-    font-size:
-        23px;
+    font-size: 23px;
 }
 
 
 .animal span {
 
-    display:
-        block;
+    display: block;
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    line-height:
-        1.35;
+    line-height: 1.35;
 }
 
 
 .animal.arrastrando {
 
-    opacity:
-        0.45;
+    opacity: 0.45;
 
     transform:
         scale(0.92);
@@ -847,15 +772,12 @@ h1 {
 
 .animal.en-casa {
 
-    cursor:
-        default;
+    cursor: default;
 
-    background:
-        #e1ffe8;
+    background: #e1ffe8;
 
     border:
-        3px solid
-        #41c66d;
+        3px solid #41c66d;
 }
 
 
@@ -870,8 +792,7 @@ h1 {
         scale(1.05);
 
     border:
-        4px solid
-        #a35be8;
+        4px solid #a35be8;
 
     background:
         linear-gradient(
@@ -883,6 +804,7 @@ h1 {
     box-shadow:
         0 0 0 6px
         rgba(163, 91, 232, 0.18),
+
         0 12px 25px
         rgba(80, 50, 120, 0.20);
 }
@@ -890,11 +812,9 @@ h1 {
 
 .seleccionado-mensaje {
 
-    background:
-        #f4e4ff;
+    background: #f4e4ff;
 
-    color:
-        #7140a0;
+    color: #7140a0;
 }
 
 
@@ -904,8 +824,7 @@ h1 {
 
 .mensaje-resultado {
 
-    max-width:
-        700px;
+    max-width: 700px;
 
     margin:
         22px auto 0;
@@ -913,23 +832,17 @@ h1 {
     padding:
         15px 22px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    border-radius:
-        22px;
+    border-radius: 22px;
 
-    background:
-        white;
+    background: white;
 
-    color:
-        #59417c;
+    color: #59417c;
 
-    font-size:
-        20px;
+    font-size: 20px;
 
-    font-weight:
-        900;
+    font-weight: 900;
 
     box-shadow:
         0 7px 18px
@@ -944,21 +857,17 @@ h1 {
 
 .correcto {
 
-    background:
-        #d8ffe3;
+    background: #d8ffe3;
 
-    color:
-        #087d3c;
+    color: #087d3c;
 }
 
 
 .incorrecto {
 
-    background:
-        #ffe1e7;
+    background: #ffe1e7;
 
-    color:
-        #ba3153;
+    color: #ba3153;
 }
 
 
@@ -968,19 +877,43 @@ h1 {
 
 .pantalla-final {
 
-    display:
-        flex;
+    position: relative;
 
-    align-items:
-        center;
+    overflow: hidden;
 
-    justify-content:
-        center;
+    display: flex;
 
-    padding:
-        25px;
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
 
     background:
+        radial-gradient(
+            circle at 20% 20%,
+            #c8f8d9,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 20%,
+            #d6eeff,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            #fff1a9,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            #ffd5eb,
+            transparent 35%
+        ),
+
         linear-gradient(
             135deg,
             #ccf8dc,
@@ -994,24 +927,27 @@ h1 {
 
 .tarjeta-final {
 
-    max-width:
-        850px;
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    width: 90%;
 
     padding:
-        45px;
+        35px 45px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    border-radius:
-        40px;
+    border-radius: 40px;
 
     background:
         rgba(
             255,
             255,
             255,
-            0.92
+            0.93
         );
 
     box-shadow:
@@ -1027,54 +963,339 @@ h1 {
 
 .trofeo {
 
-    font-size:
-        95px;
+    font-size: 80px;
+
+    animation:
+        trofeoBrinca
+        1s ease-in-out
+        infinite alternate;
 }
 
 
 .tarjeta-final h2 {
 
     margin:
-        10px 0;
+        5px 0;
 
-    color:
-        #6842b7;
+    color: #6842b7;
 
     font-size:
-        50px;
+        clamp(
+            38px,
+            4vw,
+            55px
+        );
 }
 
 
 .tarjeta-final h3 {
 
-    color:
-        #ef4d92;
+    margin:
+        10px 0 20px;
+
+    color: #ef4d92;
 
     font-size:
-        27px;
+        clamp(
+            22px,
+            2.2vw,
+            30px
+        );
 }
 
 
 .tarjeta-final p {
 
-    font-size:
-        20px;
+    font-size: 19px;
 
-    line-height:
-        1.5;
+    line-height: 1.5;
 }
 
+
+/* =====================================================
+   ANIMALES FESTEJANDO
+   ===================================================== */
+
+.fiesta-animales {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    align-items: end;
+
+    gap: 15px;
+
+    margin:
+        20px 0 25px;
+
+    padding:
+        18px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #edffe9,
+            #fff6c8,
+            #ffe8f2,
+            #e1f4ff
+        );
+}
+
+
+.animal-fiesta {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: end;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    color: #5c4285;
+}
+
+
+.emoji-fiesta {
+
+    font-size:
+        clamp(
+            55px,
+            6vw,
+            90px
+        );
+
+    transform-origin:
+        center bottom;
+}
+
+
+/* Rex brinca */
+
+.rex-fiesta .emoji-fiesta {
+
+    animation:
+        rexBaila
+        0.75s ease-in-out
+        infinite alternate;
+}
+
+
+/* Blue salta */
+
+.blue-fiesta .emoji-fiesta {
+
+    animation:
+        blueSalta
+        1s ease-in-out
+        infinite;
+}
+
+
+/* Zafir se balancea */
+
+.zafir-fiesta .emoji-fiesta {
+
+    animation:
+        zafirBaila
+        1.1s ease-in-out
+        infinite alternate;
+}
+
+
+/* Moki baila */
+
+.moki-fiesta .emoji-fiesta {
+
+    animation:
+        mokiBaila
+        0.7s ease-in-out
+        infinite alternate;
+}
+
+
+/* =====================================================
+   ANIMACIONES
+   ===================================================== */
+
+@keyframes rexBaila {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    to {
+        transform:
+            translateY(-18px)
+            rotate(5deg)
+            scale(1.08);
+    }
+
+}
+
+
+@keyframes blueSalta {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-8deg);
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            rotate(10deg)
+            scale(1.08);
+    }
+
+}
+
+
+@keyframes zafirBaila {
+
+    from {
+        transform:
+            rotate(-7deg)
+            translateY(0);
+    }
+
+    to {
+        transform:
+            rotate(7deg)
+            translateY(-10px);
+    }
+
+}
+
+
+@keyframes mokiBaila {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(-12deg)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateY(-20px)
+            rotate(12deg)
+            scale(1.10);
+    }
+
+}
+
+
+@keyframes trofeoBrinca {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    to {
+        transform:
+            translateY(-10px)
+            rotate(3deg)
+            scale(1.05);
+    }
+
+}
+
+
+/* =====================================================
+   CONFETI
+   ===================================================== */
+
+.confeti {
+
+    position: absolute;
+
+    z-index: 2;
+
+    font-size: 35px;
+
+    animation:
+        caerConfeti
+        3.5s linear
+        infinite;
+}
+
+
+.confeti1 {
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.confeti2 {
+    left: 23%;
+    animation-delay: 0.7s;
+}
+
+.confeti3 {
+    left: 40%;
+    animation-delay: 1.2s;
+}
+
+.confeti4 {
+    left: 58%;
+    animation-delay: 0.3s;
+}
+
+.confeti5 {
+    left: 76%;
+    animation-delay: 1.5s;
+}
+
+.confeti6 {
+    left: 90%;
+    animation-delay: 0.9s;
+}
+
+
+@keyframes caerConfeti {
+
+    0% {
+        top: -10%;
+        transform:
+            rotate(0deg);
+    }
+
+    100% {
+        top: 105%;
+        transform:
+            rotate(720deg);
+    }
+
+}
+
+
+/* =====================================================
+   INSIGNIA
+   ===================================================== */
 
 .insignia {
 
     margin:
-        30px 0;
+        25px 0;
 
-    padding:
-        20px;
+    padding: 18px;
 
-    border-radius:
-        24px;
+    border-radius: 24px;
 
     background:
         linear-gradient(
@@ -1083,14 +1304,34 @@ h1 {
             #ffd479
         );
 
-    color:
-        #a46800;
+    color: #a46800;
 
     font-size:
-        23px;
+        clamp(
+            18px,
+            2vw,
+            24px
+        );
 
-    font-weight:
-        900;
+    font-weight: 900;
+
+    animation:
+        insigniaBrilla
+        1.4s ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes insigniaBrilla {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.025);
+    }
+
 }
 
 
@@ -1099,8 +1340,7 @@ h1 {
     padding:
         17px 32px;
 
-    font-size:
-        22px;
+    font-size: 22px;
 }
 
 
@@ -1112,55 +1352,44 @@ h1 {
 
     .tarjeta-inicio {
 
-        width:
-            88vw;
+        width: 88vw;
     }
 
     .habitats,
     .animalitos {
 
         grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
+            repeat(2, 1fr);
     }
 
     .encabezado-juego {
 
-        flex-direction:
-            column;
+        flex-direction: column;
 
-        text-align:
-            center;
+        text-align: center;
     }
 
     .animal {
 
-        cursor:
-            pointer;
+        cursor: pointer;
     }
 
     .habitat {
 
-        cursor:
-            pointer;
+        cursor: pointer;
     }
 
     .zona-soltar {
 
-        min-height:
-            60px;
+        min-height: 60px;
 
-        display:
-            flex;
+        display: flex;
 
-        align-items:
-            center;
+        align-items: center;
 
-        justify-content:
-            center;
+        justify-content: center;
     }
+
 }
 
 
@@ -1168,17 +1397,44 @@ h1 {
 
     #botonComenzar {
 
-        min-width:
-            0;
+        min-width: 0;
 
-        width:
-            95%;
+        width: 95%;
     }
 
     .habitats,
     .animalitos {
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
+
+    .fiesta-animales {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .tarjeta-final {
+
+        padding:
+            25px 18px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCIR MOVIMIENTO SI EL DISPOSITIVO LO PIDE
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .emoji-fiesta,
+    .trofeo,
+    .confeti,
+    .insignia {
+
+        animation: none !important;
+    }
+
 }
