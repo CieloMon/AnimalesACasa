@@ -1,12 +1,13 @@
 /* =====================================================
    ¡DE VUELTA A CASA!
-   JavaScript para computadora + celular
+   JavaScript del juego educativo
+   Computadora + celular
    ===================================================== */
 
 
-/* -----------------------------------------------------
+/* =====================================================
    ELEMENTOS
-   ----------------------------------------------------- */
+   ===================================================== */
 
 const pantallaInicio =
     document.getElementById("pantallaInicio");
@@ -36,9 +37,9 @@ const numeroRescatados =
     document.getElementById("numeroRescatados");
 
 
-/* -----------------------------------------------------
+/* =====================================================
    VARIABLES
-   ----------------------------------------------------- */
+   ===================================================== */
 
 let animalArrastrado = null;
 
@@ -51,203 +52,246 @@ let animalesEnCasa = 0;
    COMENZAR
    ===================================================== */
 
-botonComenzar.addEventListener("click", function () {
+botonComenzar.addEventListener(
+    "click",
+    function () {
 
-    pantallaInicio.classList.add("oculto");
+        pantallaInicio.classList.add(
+            "oculto"
+        );
 
-    pantallaJuego.classList.remove("oculto");
+        pantallaJuego.classList.remove(
+            "oculto"
+        );
 
-    mensajeResultado.className =
-        "mensaje-resultado";
+        mensajeResultado.className =
+            "mensaje-resultado";
 
-    mensajeResultado.textContent =
-        "🌟 ¡Comienza la misión! Arrastra un animalito o tócalo para elegirlo.";
+        mensajeResultado.textContent =
+            "🌟 ¡Comienza la misión! Arrastra un animalito o tócalo para elegirlo.";
 
-});
+    }
+);
 
 
 /* =====================================================
    ANIMALITOS
    ===================================================== */
 
-animales.forEach(function (animal) {
+animales.forEach(
+    function (animal) {
 
-    /* -----------------------------------------------
-       COMPUTADORA: ARRASTRAR
-       ----------------------------------------------- */
+        /* COMPUTADORA */
 
-    animal.addEventListener("dragstart", function () {
+        animal.addEventListener(
+            "dragstart",
+            function () {
 
-        if (animal.classList.contains("en-casa")) {
-            return;
-        }
+                if (
+                    animal.classList.contains(
+                        "en-casa"
+                    )
+                ) {
 
-        animalArrastrado = animal;
+                    return;
+                }
 
-        animal.classList.add("arrastrando");
+                animalArrastrado =
+                    animal;
 
-    });
+                animal.classList.add(
+                    "arrastrando"
+                );
 
-
-    animal.addEventListener("dragend", function () {
-
-        animal.classList.remove("arrastrando");
-
-        animalArrastrado = null;
-
-    });
-
-
-    /* -----------------------------------------------
-       CELULAR / TABLET: TOCAR PARA SELECCIONAR
-       ----------------------------------------------- */
-
-    animal.addEventListener("click", function () {
-
-        if (animal.classList.contains("en-casa")) {
-            return;
-        }
-
-        /* Quitamos selección anterior */
-
-        animales.forEach(function (otroAnimal) {
-
-            otroAnimal.classList.remove(
-                "seleccionado"
-            );
-
-        });
-
-
-        /* Seleccionamos este */
-
-        animalSeleccionado = animal;
-
-        animal.classList.add(
-            "seleccionado"
+            }
         );
 
 
-        const nombre =
-            animal.querySelector("strong").textContent;
+        animal.addEventListener(
+            "dragend",
+            function () {
+
+                animal.classList.remove(
+                    "arrastrando"
+                );
+
+                animalArrastrado =
+                    null;
+
+            }
+        );
 
 
-        mensajeResultado.className =
-            "mensaje-resultado seleccionado-mensaje";
+        /* CELULAR */
+
+        animal.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    animal.classList.contains(
+                        "en-casa"
+                    )
+                ) {
+
+                    return;
+                }
 
 
-        mensajeResultado.textContent =
-            "👆 ¡Elegiste a " +
-            nombre +
-            "! Ahora toca la casita donde crees que vive.";
+                animales.forEach(
+                    function (otroAnimal) {
 
-    });
+                        otroAnimal.classList.remove(
+                            "seleccionado"
+                        );
 
-});
+                    }
+                );
+
+
+                animalSeleccionado =
+                    animal;
+
+                animal.classList.add(
+                    "seleccionado"
+                );
+
+
+                const nombre =
+                    animal.querySelector(
+                        "strong"
+                    ).textContent;
+
+
+                mensajeResultado.className =
+                    "mensaje-resultado seleccionado-mensaje";
+
+
+                mensajeResultado.textContent =
+                    "👆 ¡Elegiste a " +
+                    nombre +
+                    "! Ahora toca la casita donde crees que vive.";
+
+            }
+        );
+
+    }
+);
 
 
 /* =====================================================
    HÁBITATS
    ===================================================== */
 
-habitats.forEach(function (habitat) {
+habitats.forEach(
+    function (habitat) {
 
-    /* -----------------------------------------------
-       COMPUTADORA
-       ----------------------------------------------- */
+        /* COMPUTADORA */
 
-    habitat.addEventListener(
-        "dragover",
-        function (evento) {
+        habitat.addEventListener(
+            "dragover",
+            function (evento) {
 
-            evento.preventDefault();
+                evento.preventDefault();
 
-            habitat.classList.add("sobre");
-
-        }
-    );
-
-
-    habitat.addEventListener(
-        "dragleave",
-        function () {
-
-            habitat.classList.remove("sobre");
-
-        }
-    );
-
-
-    habitat.addEventListener(
-        "drop",
-        function (evento) {
-
-            evento.preventDefault();
-
-            habitat.classList.remove("sobre");
-
-
-            if (!animalArrastrado) {
-                return;
-            }
-
-
-            revisarRespuesta(
-                animalArrastrado,
-                habitat
-            );
-
-        }
-    );
-
-
-    /* -----------------------------------------------
-       CELULAR / TABLET
-       ----------------------------------------------- */
-
-    habitat.addEventListener(
-        "click",
-        function () {
-
-            if (!animalSeleccionado) {
-
-                mensajeResultado.className =
-                    "mensaje-resultado incorrecto";
-
-
-                mensajeResultado.textContent =
-                    "🐾 Primero elige un animalito y después toca su casita.";
-
-                return;
+                habitat.classList.add(
+                    "sobre"
+                );
 
             }
+        );
 
 
-            revisarRespuesta(
-                animalSeleccionado,
-                habitat
-            );
+        habitat.addEventListener(
+            "dragleave",
+            function () {
 
-        }
-    );
+                habitat.classList.remove(
+                    "sobre"
+                );
 
-});
+            }
+        );
+
+
+        habitat.addEventListener(
+            "drop",
+            function (evento) {
+
+                evento.preventDefault();
+
+                habitat.classList.remove(
+                    "sobre"
+                );
+
+
+                if (!animalArrastrado) {
+
+                    return;
+                }
+
+
+                revisarRespuesta(
+                    animalArrastrado,
+                    habitat
+                );
+
+            }
+        );
+
+
+        /* CELULAR */
+
+        habitat.addEventListener(
+            "click",
+            function () {
+
+                if (!animalSeleccionado) {
+
+                    mensajeResultado.className =
+                        "mensaje-resultado incorrecto";
+
+
+                    mensajeResultado.textContent =
+                        "🐾 Primero elige un animalito y después toca su casita.";
+
+                    return;
+                }
+
+
+                revisarRespuesta(
+                    animalSeleccionado,
+                    habitat
+                );
+
+            }
+        );
+
+    }
+);
 
 
 /* =====================================================
    REVISAR RESPUESTA
    ===================================================== */
 
-function revisarRespuesta(animal, habitat) {
+function revisarRespuesta(
+    animal,
+    habitat
+) {
 
     const casaCorrecta =
         animal.dataset.casa;
+
 
     const casaElegida =
         habitat.dataset.habitat;
 
 
-    if (casaCorrecta === casaElegida) {
+    if (
+        casaCorrecta ===
+        casaElegida
+    ) {
 
         respuestaCorrecta(
             animal,
@@ -271,16 +315,30 @@ function revisarRespuesta(animal, habitat) {
    RESPUESTA CORRECTA
    ===================================================== */
 
-function respuestaCorrecta(animal, habitat) {
+function respuestaCorrecta(
+    animal,
+    habitat
+) {
 
-    if (animal.classList.contains("en-casa")) {
+    if (
+        animal.classList.contains(
+            "en-casa"
+        )
+    ) {
+
         return;
     }
 
 
-    animal.classList.add("en-casa");
+    animal.classList.add(
+        "en-casa"
+    );
 
-    animal.classList.remove("seleccionado");
+
+    animal.classList.remove(
+        "seleccionado"
+    );
+
 
     animal.setAttribute(
         "draggable",
@@ -289,7 +347,9 @@ function respuestaCorrecta(animal, habitat) {
 
 
     const zonaSoltar =
-        habitat.querySelector(".zona-soltar");
+        habitat.querySelector(
+            ".zona-soltar"
+        );
 
 
     zonaSoltar.innerHTML =
@@ -298,12 +358,15 @@ function respuestaCorrecta(animal, habitat) {
 
     animalesEnCasa++;
 
+
     numeroRescatados.textContent =
         animalesEnCasa;
 
 
     const nombre =
-        animal.querySelector("strong").textContent;
+        animal.querySelector(
+            "strong"
+        ).textContent;
 
 
     mensajeResultado.className =
@@ -322,7 +385,7 @@ function respuestaCorrecta(animal, habitat) {
     else if (nombre === "Blue") {
 
         mensajeResultado.textContent =
-            "🐢 🎉 ¡BLUE ESTÁ EN CASA! ¡Al aguaaa! 🐬🌊";
+            "🐢 🎉 ¡Blue está en casa! ¡Al aguaaa! 🐬🌊";
 
     }
 
@@ -341,16 +404,21 @@ function respuestaCorrecta(animal, habitat) {
     }
 
 
-    animalSeleccionado = null;
+    animalSeleccionado =
+        null;
 
-    animalArrastrado = null;
+
+    animalArrastrado =
+        null;
 
 
-    if (animalesEnCasa === 4) {
+    if (
+        animalesEnCasa === 4
+    ) {
 
         setTimeout(
             mostrarPantallaFinal,
-            1300
+            1500
         );
 
     }
@@ -362,10 +430,14 @@ function respuestaCorrecta(animal, habitat) {
    RESPUESTA INCORRECTA
    ===================================================== */
 
-function respuestaIncorrecta(animal) {
+function respuestaIncorrecta(
+    animal
+) {
 
     const nombre =
-        animal.querySelector("strong").textContent;
+        animal.querySelector(
+            "strong"
+        ).textContent;
 
 
     mensajeResultado.className =
@@ -377,21 +449,35 @@ function respuestaIncorrecta(animal) {
         nombre +
         ". Mira nuevamente sus pistas… ¡tú puedes! 💛";
 
-
-    /* El animal sigue seleccionado para volver a intentar */
-
 }
 
 
 /* =====================================================
-   FINAL
+   MOSTRAR FINAL
    ===================================================== */
 
 function mostrarPantallaFinal() {
 
-    pantallaJuego.classList.add("oculto");
+    pantallaJuego.classList.add(
+        "oculto"
+    );
 
-    pantallaFinal.classList.remove("oculto");
+
+    pantallaFinal.classList.remove(
+        "oculto"
+    );
+
+
+    /*
+       Llevamos la pantalla hacia arriba
+       para que en celular se vea inmediatamente
+       la celebración.
+    */
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
