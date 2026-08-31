@@ -14,11 +14,12 @@
 
 <body>
 
-    <!-- =========================================
+    <!-- ==================================================
          PANTALLA DE INICIO
-         ========================================= -->
+         ================================================== -->
 
-    <main id="pantallaInicio" class="pantalla pantalla-inicio">
+    <main id="pantallaInicio"
+          class="pantalla pantalla-inicio">
 
         <section class="tarjeta-inicio">
 
@@ -61,8 +62,7 @@
             </div>
 
             <p class="mensaje">
-                🌎
-                ¡Cada animalito tiene un lugar especial donde vivir!
+                🌎 ¡Cada animalito tiene un lugar especial donde vivir!
             </p>
 
             <button id="botonComenzar">
@@ -82,11 +82,12 @@
     </main>
 
 
-    <!-- =========================================
+    <!-- ==================================================
          PANTALLA DEL JUEGO
-         ========================================= -->
+         ================================================== -->
 
-    <main id="pantallaJuego" class="pantalla pantalla-juego oculto">
+    <main id="pantallaJuego"
+          class="pantalla pantalla-juego oculto">
 
         <section class="juego">
 
@@ -103,11 +104,12 @@
                     </h4>
 
                     <p>
-                        Arrastra cada animalito hasta el lugar
-                        que mejor encaje con sus pistas.
+                        Arrastra cada animalito o tócalo y después
+                        elige el lugar que mejor encaje con sus pistas.
                     </p>
 
                 </div>
+
 
                 <div class="contador">
 
@@ -124,7 +126,9 @@
             </header>
 
 
-            <!-- HÁBITATS -->
+            <!-- ==================================================
+                 HÁBITATS
+                 ================================================== -->
 
             <section class="habitats">
 
@@ -146,7 +150,7 @@
                     </p>
 
                     <div class="zona-soltar">
-                        Arrastra aquí
+                        Arrastra o toca aquí
                     </div>
 
                 </div>
@@ -170,7 +174,7 @@
                     </p>
 
                     <div class="zona-soltar">
-                        Arrastra aquí
+                        Arrastra o toca aquí
                     </div>
 
                 </div>
@@ -194,7 +198,7 @@
                     </p>
 
                     <div class="zona-soltar">
-                        Arrastra aquí
+                        Arrastra o toca aquí
                     </div>
 
                 </div>
@@ -218,7 +222,7 @@
                     </p>
 
                     <div class="zona-soltar">
-                        Arrastra aquí
+                        Arrastra o toca aquí
                     </div>
 
                 </div>
@@ -226,14 +230,15 @@
             </section>
 
 
-            <!-- ANIMALITOS -->
+            <!-- ==================================================
+                 ANIMALITOS
+                 ================================================== -->
 
             <section class="zona-animales">
 
                 <h5 class="titulo-animalitos">
                     🐾 ¡Los animalitos están esperando tu ayuda!
                 </h5>
-
 
                 <div class="animalitos">
 
@@ -325,7 +330,7 @@
             </section>
 
 
-            <!-- MENSAJE DE RETROALIMENTACIÓN -->
+            <!-- RETROALIMENTACIÓN -->
 
             <div id="mensajeResultado"
                  class="mensaje-resultado">
@@ -339,12 +344,22 @@
     </main>
 
 
-    <!-- =========================================
+    <!-- ==================================================
          PANTALLA FINAL
-         ========================================= -->
+         ================================================== -->
 
     <main id="pantallaFinal"
           class="pantalla pantalla-final oculto">
+
+        <!-- CONFETI -->
+
+        <div class="confeti confeti1">🎉</div>
+        <div class="confeti confeti2">✨</div>
+        <div class="confeti confeti3">🎊</div>
+        <div class="confeti confeti4">⭐</div>
+        <div class="confeti confeti5">🎉</div>
+        <div class="confeti confeti6">✨</div>
+
 
         <section class="tarjeta-final">
 
@@ -360,15 +375,76 @@
                 🎉 ¡Todos los animalitos volvieron a casa! 🎉
             </h3>
 
+
+            <!-- NUESTROS CUATRO ANIMALES FESTEJANDO -->
+
+            <div class="fiesta-animales">
+
+                <div class="animal-fiesta rex-fiesta">
+
+                    <div class="emoji-fiesta">
+                        🦁
+                    </div>
+
+                    <strong>
+                        Rex
+                    </strong>
+
+                </div>
+
+
+                <div class="animal-fiesta blue-fiesta">
+
+                    <div class="emoji-fiesta">
+                        🐬
+                    </div>
+
+                    <strong>
+                        Blue
+                    </strong>
+
+                </div>
+
+
+                <div class="animal-fiesta zafir-fiesta">
+
+                    <div class="emoji-fiesta">
+                        🐪
+                    </div>
+
+                    <strong>
+                        Zafir
+                    </strong>
+
+                </div>
+
+
+                <div class="animal-fiesta moki-fiesta">
+
+                    <div class="emoji-fiesta">
+                        🐒
+                    </div>
+
+                    <strong>
+                        Moki
+                    </strong>
+
+                </div>
+
+            </div>
+
+
             <p>
                 Observaste las pistas, pensaste muy bien
                 y descubriste qué necesita cada animalito
                 para vivir.
             </p>
 
+
             <div class="insignia">
                 ⭐ SUPEREXPLORADOR DE LOS ANIMALES ⭐
             </div>
+
 
             <button id="botonReiniciar">
                 🔄 ¡JUGAR OTRA VEZ!
@@ -378,8 +454,6 @@
 
     </main>
 
-
-    <!-- JavaScript -->
 
     <script src="script.js"></script>
 
